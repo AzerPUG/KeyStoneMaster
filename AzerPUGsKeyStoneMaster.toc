@@ -1,0 +1,9 @@
+## Interface: 90105
+## Title: |cFFFFFF00AzerPUG's KeyStoneMaster|r
+## Author: Tex & AzerPUG Gaming Community (www.azerpug.com/discord)
+## Notes: AzerPUG's KeyStoneMaster easily track M+ scores and shows your total/averages per dungeon or affix.
+## Version: SL 9.0.5 (For actual addon version, check KSM.lua)
+## SavedVariablesPerCharacter: AZPKSMInfo
+
+DataTable.lua
+KSM.lua
