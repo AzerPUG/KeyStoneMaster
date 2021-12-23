@@ -11,10 +11,14 @@ local KeyFrames = {}
 function AZP.KeyStoneMaster:OnLoadSelf()
     EventFrame = CreateFrame("FRAME", nil)
     EventFrame:RegisterEvent("VARIABLES_LOADED")
+    EventFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")
+    EventFrame:RegisterEvent("MYTHIC_PLUS_CURRENT_AFFIX_UPDATE")
+    EventFrame:RegisterEvent("MYTHIC_PLUS_NEW_WEEKLY_RECORD")
+    EventFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")
     EventFrame:SetScript("OnEvent", function(...) AZP.KeyStoneMaster:OnEvent(...) end)
 
     KSMFrame = CreateFrame("FRAME", nil, UIParent, "BackdropTemplate")
-    KSMFrame:SetSize(500, 400)
+    KSMFrame:SetSize(425, 275)
     KSMFrame:SetPoint("CENTER", 0, 0)
     KSMFrame:EnableMouse(true)
     KSMFrame:SetMovable(true)
@@ -30,15 +34,17 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame:SetBackdropColor(0.5, 0.5, 0.5, 1)
 
     KSMFrame.Header = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalHuge")
+    KSMFrame.Header:SetSize(KSMFrame:GetWidth(), 25)
     KSMFrame.Header:SetPoint("TOP", 0, -10)
-    KSMFrame.Header:SetText("|cFF00FFFFAzerPUG's KeyStoneMaster!|r")
-    KSMFrame.SubHeader = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    KSMFrame.SubHeader:SetPoint("TOP", 0, -35)
-    KSMFrame.SubHeader:SetText("|cFF00FFFF - XXX - |r")
+    KSMFrame.Header:SetText(string.format("|cFF00FFFFAzerPUG's KeyStoneMaster v%s|r", AZP.VersionControl["KeyStoneMaster"]))
+    -- KSMFrame.SubHeader = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
+    -- KSMFrame.SubHeader:SetSize(KSMFrame:GetWidth(), 25)
+    -- KSMFrame.SubHeader:SetPoint("TOP", KSMFrame.Header, "BOTTOM", 0, 0)
+    -- KSMFrame.SubHeader:SetText("|cFF00FFFF - XXX - |r")
 
     KSMFrame.FramesHeader = CreateFrame("FRAME", nil, KSMFrame)
     KSMFrame.FramesHeader:SetSize(KSMFrame:GetWidth() - 10, 25)
-    KSMFrame.FramesHeader:SetPoint("TOPLEFT", 10, -50)
+    KSMFrame.FramesHeader:SetPoint("TOPLEFT", KSMFrame.Header, "BOTTOMLEFT", 0, -5)
 
     KSMFrame.FramesHeader.Name = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.FramesHeader.Name:SetSize(100, 25)
@@ -72,7 +78,7 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     for ID, Info in pairs(KeyList) do
         local curFrame = CreateFrame("FRAME", nil, KSMFrame)
         curFrame:SetSize(KSMFrame:GetWidth() - 10, 25)
-        curFrame:SetPoint("TOPLEFT", 10, -75 - 25 * KeyFrames.Number)
+        curFrame:SetPoint("TOP", KSMFrame.FramesHeader, "BOTTOM", 0,  -25 * KeyFrames.Number)
 
         curFrame.Name = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
         curFrame.Name:SetSize(100, curFrame:GetHeight())
@@ -112,6 +118,11 @@ function AZP.KeyStoneMaster:OnLoadSelf()
         KeyFrames.Number = KeyFrames.Number + 1
         KeyFrames[ID] = curFrame
     end
+
+    KSMFrame.CloseButton = CreateFrame("Button", nil, KSMFrame, "UIPanelCloseButton, BackDropTemplate")
+    KSMFrame.CloseButton:SetSize(24, 24)
+    KSMFrame.CloseButton:SetPoint("TOPRIGHT", KSMFrame, "TOPRIGHT", -3, -3)
+    KSMFrame.CloseButton:SetScript("OnClick", function() KSMFrame:Hide() end)
 end
 
 function AZP.KeyStoneMaster.GetAllKeyStoneValues()
@@ -152,7 +163,6 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
         KeyFrames[ID].FMScore:SetText(string.format("|c%s(%.1f)|r", curFort.Color, curFort.MScore))
 
         local curTotScore = curTyr.MScore + curFort.MScore
-
         totalScore = totalScore + curTotScore
     end
 
@@ -193,20 +203,22 @@ function AZP.KeyStoneMaster.CalculateRGBToHex(RGB, ID)
     local FirstHex, SecondHex = nil, nil
 
         if FirstRGB  < 10 then FirstHex = FirstRGB
-    elseif FirstRGB == 11 then FirstHex = "A"
-    elseif FirstRGB == 12 then FirstHex = "B"
-    elseif FirstRGB == 13 then FirstHex = "C"
-    elseif FirstRGB == 14 then FirstHex = "D"
-    elseif FirstRGB == 15 then FirstHex = "E"
-    elseif FirstRGB == 16 then FirstHex = "F" end
+    elseif FirstRGB == 10 then FirstHex = "A"
+    elseif FirstRGB == 11 then FirstHex = "B"
+    elseif FirstRGB == 12 then FirstHex = "C"
+    elseif FirstRGB == 13 then FirstHex = "D"
+    elseif FirstRGB == 14 then FirstHex = "E"
+    elseif FirstRGB == 15 then FirstHex = "F" end
 
         if SecondRGB  < 10 then SecondHex = SecondRGB
-    elseif SecondRGB == 11 then SecondHex = "A"
-    elseif SecondRGB == 12 then SecondHex = "B"
-    elseif SecondRGB == 13 then SecondHex = "C"
-    elseif SecondRGB == 14 then SecondHex = "D"
-    elseif SecondRGB == 15 then SecondHex = "E"
-    elseif SecondRGB == 16 then SecondHex = "F" end
+    elseif SecondRGB == 10 then SecondHex = "A"
+    elseif SecondRGB == 11 then SecondHex = "B"
+    elseif SecondRGB == 12 then SecondHex = "C"
+    elseif SecondRGB == 13 then SecondHex = "D"
+    elseif SecondRGB == 14 then SecondHex = "E"
+    elseif SecondRGB == 15 then SecondHex = "F" end
+
+    print(ID, RGB, FirstRGB, SecondRGB, FirstHex, SecondHex)
 
     local Hex = FirstHex .. SecondHex
 
@@ -216,9 +228,16 @@ end
 function AZP.KeyStoneMaster:OnEvent(self, event, ...)
     if event == "VARIABLES_LOADED" then
         if AZPKSMInfo == nil then AZPKSMInfo = {} AZPKSMInfo[UnitGUID("PLAYER")] = {} end
-        AZP.KeyStoneMaster.GetAllKeyStoneValues()
-    elseif event == "KeyStoneValuesUpdatedOrSomething?" then
-        AZP.KeyStoneMaster.GetAllKeyStoneValues()
+        C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
+    elseif event == "CHALLENGE_MODE_COMPLETED" then
+        print("Event: CHALLENGE_MODE_COMPLETED")
+        C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
+    elseif event == "MYTHIC_PLUS_CURRENT_AFFIX_UPDATE" then
+        print("Event: MYTHIC_PLUS_CURRENT_AFFIX_UPDATE")
+        C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
+    elseif event == "MYTHIC_PLUS_NEW_WEEKLY_RECORD" then
+        print("Event: MYTHIC_PLUS_NEW_WEEKLY_RECORD")
+        C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
     end
 end
 
