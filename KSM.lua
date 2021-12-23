@@ -140,19 +140,23 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
         allCurInfo[ID].Color = ""
         local curInfo = C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(ID)
         if curInfo ~= nil then
-            allCurInfo[ID].Tyranical = {Score = curInfo[1].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0}
-            allCurInfo[ID].Fortified = {Score = curInfo[2].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0}
-            if allCurInfo[ID].Tyranical.Score > allCurInfo[ID].Fortified.Score then
-                allCurInfo[ID].Tyranical.Color = "FF00FF00"
-                allCurInfo[ID].Tyranical.Multiplier = 1.5
-            else
-                allCurInfo[ID].Fortified.Color = "FF00FF00"
-                allCurInfo[ID].Fortified.Multiplier = 1.5
-            end
-            allCurInfo[ID].Fortified.MScore = allCurInfo[ID].Fortified.Score * allCurInfo[ID].Fortified.Multiplier
-            allCurInfo[ID].Tyranical.MScore = allCurInfo[ID].Tyranical.Score * allCurInfo[ID].Tyranical.Multiplier
-            allCurInfo[ID].Score = allCurInfo[ID].Fortified.MScore + allCurInfo[ID].Tyranical.MScore
+            if curInfo[1] ~= nil then allCurInfo[ID][curInfo[1].name] = {Score = curInfo[1].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+            if curInfo[2] ~= nil then allCurInfo[ID][curInfo[2].name] = {Score = curInfo[2].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
         end
+        
+        if allCurInfo[ID].Tyranical == nil then allCurInfo[ID].Tyranical = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+        if allCurInfo[ID].Fortified == nil then allCurInfo[ID].Fortified = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+
+        if allCurInfo[ID].Tyranical.Score > allCurInfo[ID].Fortified.Score then
+            allCurInfo[ID].Tyranical.Color = "FF00FF00"
+            allCurInfo[ID].Tyranical.Multiplier = 1.5
+        else
+            allCurInfo[ID].Fortified.Color = "FF00FF00"
+            allCurInfo[ID].Fortified.Multiplier = 1.5
+        end
+        allCurInfo[ID].Fortified.MScore = allCurInfo[ID].Fortified.Score * allCurInfo[ID].Fortified.Multiplier
+        allCurInfo[ID].Tyranical.MScore = allCurInfo[ID].Tyranical.Score * allCurInfo[ID].Tyranical.Multiplier
+        allCurInfo[ID].Score = allCurInfo[ID].Fortified.MScore + allCurInfo[ID].Tyranical.MScore
 
         local curInfoID = allCurInfo[ID]
         local curTyr = curInfoID.Tyranical
