@@ -14,7 +14,7 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     EventFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")
     EventFrame:RegisterEvent("MYTHIC_PLUS_CURRENT_AFFIX_UPDATE")
     EventFrame:RegisterEvent("MYTHIC_PLUS_NEW_WEEKLY_RECORD")
-    EventFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")
+    EventFrame:RegisterEvent("PLAYER_LOGIN")
     EventFrame:SetScript("OnEvent", function(...) AZP.KeyStoneMaster:OnEvent(...) end)
 
     KSMFrame = CreateFrame("FRAME", nil, UIParent, "BackdropTemplate")
@@ -51,14 +51,14 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.FramesHeader.Name:SetPoint("LEFT", 0, 0)
     KSMFrame.FramesHeader.Name:SetText("Name")
 
-    KSMFrame.FramesHeader.Tyranical = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    KSMFrame.FramesHeader.Tyranical:SetSize(100, 25)
-    KSMFrame.FramesHeader.Tyranical:SetPoint("LEFT", KSMFrame.FramesHeader.Name, "RIGHT", 0, 0)
-    KSMFrame.FramesHeader.Tyranical:SetText("Tyranical")
+    KSMFrame.FramesHeader.Tyrannical = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
+    KSMFrame.FramesHeader.Tyrannical:SetSize(100, 25)
+    KSMFrame.FramesHeader.Tyrannical:SetPoint("LEFT", KSMFrame.FramesHeader.Name, "RIGHT", 0, 0)
+    KSMFrame.FramesHeader.Tyrannical:SetText("Tyrannical")
 
     KSMFrame.FramesHeader.Fortified = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.FramesHeader.Fortified:SetSize(100, 25)
-    KSMFrame.FramesHeader.Fortified:SetPoint("LEFT", KSMFrame.FramesHeader.Tyranical, "RIGHT", 10, 0)
+    KSMFrame.FramesHeader.Fortified:SetPoint("LEFT", KSMFrame.FramesHeader.Tyrannical, "RIGHT", 10, 0)
     KSMFrame.FramesHeader.Fortified:SetText("Fortified")
 
     KSMFrame.FramesHeader.Total = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
@@ -143,23 +143,24 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
             if curInfo[1] ~= nil then allCurInfo[ID][curInfo[1].name] = {Score = curInfo[1].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
             if curInfo[2] ~= nil then allCurInfo[ID][curInfo[2].name] = {Score = curInfo[2].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
         end
-        
-        if allCurInfo[ID].Tyranical == nil then allCurInfo[ID].Tyranical = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+        -- Move these default assignments to above the curInfo, and always intialize Tyrannical and Fortiefied with score == 0.
+        -- Then change code above to only update the score of the already intialized tables.
+        if allCurInfo[ID].Tyrannical == nil then allCurInfo[ID].Tyrannical = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
         if allCurInfo[ID].Fortified == nil then allCurInfo[ID].Fortified = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
 
-        if allCurInfo[ID].Tyranical.Score > allCurInfo[ID].Fortified.Score then
-            allCurInfo[ID].Tyranical.Color = "FF00FF00"
-            allCurInfo[ID].Tyranical.Multiplier = 1.5
+        if allCurInfo[ID].Tyrannical.Score > allCurInfo[ID].Fortified.Score then
+            allCurInfo[ID].Tyrannical.Color = "FF00FF00"
+            allCurInfo[ID].Tyrannical.Multiplier = 1.5
         else
             allCurInfo[ID].Fortified.Color = "FF00FF00"
             allCurInfo[ID].Fortified.Multiplier = 1.5
         end
         allCurInfo[ID].Fortified.MScore = allCurInfo[ID].Fortified.Score * allCurInfo[ID].Fortified.Multiplier
-        allCurInfo[ID].Tyranical.MScore = allCurInfo[ID].Tyranical.Score * allCurInfo[ID].Tyranical.Multiplier
-        allCurInfo[ID].Score = allCurInfo[ID].Fortified.MScore + allCurInfo[ID].Tyranical.MScore
+        allCurInfo[ID].Tyrannical.MScore = allCurInfo[ID].Tyrannical.Score * allCurInfo[ID].Tyrannical.Multiplier
+        allCurInfo[ID].Score = allCurInfo[ID].Fortified.MScore + allCurInfo[ID].Tyrannical.MScore
 
         local curInfoID = allCurInfo[ID]
-        local curTyr = curInfoID.Tyranical
+        local curTyr = curInfoID.Tyrannical
         local curFort = curInfoID.Fortified
         KeyFrames[ID].TBScore:SetText(string.format("|c%s%s|r", curTyr.Color, curTyr.Score))
         KeyFrames[ID].TMScore:SetText(string.format("|c%s(%.1f)|r", curTyr.Color, curTyr.MScore))
@@ -171,7 +172,7 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
     end
 
     for ID, Info in pairs(KeyList) do
-        local curPerc = (allCurInfo[ID].Tyranical.MScore + allCurInfo[ID].Fortified.MScore) / totalScore * 100
+        local curPerc = (allCurInfo[ID].Tyrannical.MScore + allCurInfo[ID].Fortified.MScore) / totalScore * 100
         allCurInfo[ID].Percentage = curPerc
         KeyFrames[ID].Percentage:SetText(string.format("|cFF00FFFF%.2f|r", curPerc))
 
@@ -236,6 +237,9 @@ function AZP.KeyStoneMaster:OnEvent(self, event, ...)
     elseif event == "CHALLENGE_MODE_COMPLETED" then
         print("Event: CHALLENGE_MODE_COMPLETED")
         C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
+    elseif event == "PLAYER_LOGIN" then
+        C_MythicPlus.RequestMapInfo()
+        C_MythicPlus.RequestCurrentAffixes()
     elseif event == "MYTHIC_PLUS_CURRENT_AFFIX_UPDATE" then
         print("Event: MYTHIC_PLUS_CURRENT_AFFIX_UPDATE")
         C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
