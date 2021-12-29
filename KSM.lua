@@ -1,11 +1,11 @@
 if AZP == nil then AZP = {} end
 if AZP.VersionControl == nil then AZP.VersionControl = {} end
 
-AZP.VersionControl["KeyStoneMaster"] = 1
+AZP.VersionControl["KeyStoneMaster"] = 2
 if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 if AZP.KeyStoneMaster.Events == nil then AZP.KeyStoneMaster.Events = {} end
 
-local KSMFrame, EventFrame, UpdateFrame = nil, nil, nil
+local KSMFrame, EventFrame = nil, nil
 local KeyFrames = {}
 
 function AZP.KeyStoneMaster:OnLoadSelf()
@@ -37,10 +37,6 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.Header:SetSize(KSMFrame:GetWidth(), 25)
     KSMFrame.Header:SetPoint("TOP", 0, -10)
     KSMFrame.Header:SetText(string.format("|cFF00FFFFAzerPUG's KeyStoneMaster v%s|r", AZP.VersionControl["KeyStoneMaster"]))
-    -- KSMFrame.SubHeader = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    -- KSMFrame.SubHeader:SetSize(KSMFrame:GetWidth(), 25)
-    -- KSMFrame.SubHeader:SetPoint("TOP", KSMFrame.Header, "BOTTOM", 0, 0)
-    -- KSMFrame.SubHeader:SetText("|cFF00FFFF - XXX - |r")
 
     KSMFrame.FramesHeader = CreateFrame("FRAME", nil, KSMFrame)
     KSMFrame.FramesHeader:SetSize(KSMFrame:GetWidth() - 10, 25)
@@ -223,8 +219,6 @@ function AZP.KeyStoneMaster.CalculateRGBToHex(RGB, ID)
     elseif SecondRGB == 14 then SecondHex = "E"
     elseif SecondRGB == 15 then SecondHex = "F" end
 
-    print(ID, RGB, FirstRGB, SecondRGB, FirstHex, SecondHex)
-
     local Hex = FirstHex .. SecondHex
 
     return Hex
@@ -232,19 +226,13 @@ end
 
 function AZP.KeyStoneMaster:OnEvent(self, event, ...)
     if event == "VARIABLES_LOADED" then
-        if AZPKSMInfo == nil then AZPKSMInfo = {} AZPKSMInfo[UnitGUID("PLAYER")] = {} end
-        C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
-    elseif event == "CHALLENGE_MODE_COMPLETED" then
-        print("Event: CHALLENGE_MODE_COMPLETED")
+        if AZPKSMInfo == nil then AZPKSMInfo = {} end
+        if AZPKSMInfo[UnitGUID("PLAYER")] == nil then AZPKSMInfo[UnitGUID("PLAYER")] = {} end
         C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
     elseif event == "PLAYER_LOGIN" then
         C_MythicPlus.RequestMapInfo()
         C_MythicPlus.RequestCurrentAffixes()
     elseif event == "MYTHIC_PLUS_CURRENT_AFFIX_UPDATE" then
-        print("Event: MYTHIC_PLUS_CURRENT_AFFIX_UPDATE")
-        C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
-    elseif event == "MYTHIC_PLUS_NEW_WEEKLY_RECORD" then
-        print("Event: MYTHIC_PLUS_NEW_WEEKLY_RECORD")
         C_Timer.After(5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
     end
 end
