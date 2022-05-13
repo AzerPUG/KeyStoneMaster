@@ -1,9 +1,14 @@
-## Interface: 90105
-## Title: |cFFFFFF00AzerPUG's KeyStoneMaster|r
+## Interface: 90200
+## Title: |cFF00FFFFAzerPUG's|r |cFFFF00FFKeyStoneMaster|r
 ## Author: Tex & AzerPUG Gaming Community (www.azerpug.com/discord)
 ## Notes: AzerPUG's KeyStoneMaster easily track M+ scores and shows your total/averages per dungeon or affix.
-## Version: SL 9.0.5 (For actual addon version, check KSM.lua)
-## SavedVariablesPerCharacter: AZPKSMInfo
+## Version: SL 9.2 (For actual addon version, check KSM.lua)
+## SavedVariables: AZPKSMLocation
+## SavedVariablesPerCharacter: AZPKSMInfo AZPKSMAttached AZPKSMAutoPopUp
 
 DataTable.lua
+SlashCommands.lua
 KSM.lua
+MPlusLoot.lua
+
+Affixes/Volcanic.lua
