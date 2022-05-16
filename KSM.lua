@@ -1,7 +1,7 @@
 if AZP == nil then AZP = {} end
 if AZP.VersionControl == nil then AZP.VersionControl = {} end
 
-AZP.VersionControl["KeyStoneMaster"] = 10
+AZP.VersionControl["KeyStoneMaster"] = 11
 if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 if AZP.KeyStoneMaster.Events == nil then AZP.KeyStoneMaster.Events = {} end
 
@@ -441,9 +441,12 @@ function AZP.KeyStoneMaster:DeAttachFrame()
 end
 
 function AZP.KeyStoneMaster:ToggleScoreFrame()
+    --print("ToggleScoreFrame()")
     if KSMFrame:IsShown() == true then
+        --print("IsShown() == true, hiding it now!")
         KSMFrame:Hide()
     else
+        --print("IsShown() == false, showing it now!")
         KSMFrame:Show()
     end
 end
@@ -476,9 +479,9 @@ function AZP.KeyStoneMaster:OnEvent(self, event, ...)
         C_MythicPlus.RequestCurrentAffixes()
     -- elseif event == "MYTHIC_PLUS_CURRENT_AFFIX_UPDATE" then
     elseif event == "CHALLENGE_MODE_COMPLETED" then
-        print(CHALLENGE_MODE_COMPLETED)
+        --print(CHALLENGE_MODE_COMPLETED)
         if ShowLoadingBar == true then AZP.KeyStoneMaster.MPlusUpdateScores() else ShowLoadingBar = true end
-        if AZPKSMAutoPopUp == true then print("AZPKSMAutoPopUp:", AZPKSMAutoPopUp) AZP.KeyStoneMaster:ToggleScoreFrame() end
+        if AZPKSMAutoPopUp == true then AZP.KeyStoneMaster:ToggleScoreFrame() end --print("AZPKSMAutoPopUp:", AZPKSMAutoPopUp) end
     end
 end
 
