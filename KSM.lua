@@ -1,7 +1,7 @@
 if AZP == nil then AZP = {} end
 if AZP.VersionControl == nil then AZP.VersionControl = {} end
 
-AZP.VersionControl["KeyStoneMaster"] = 11
+AZP.VersionControl["KeyStoneMaster"] = 12
 if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 if AZP.KeyStoneMaster.Events == nil then AZP.KeyStoneMaster.Events = {} end
 
@@ -245,10 +245,10 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     PVEFrame.AZPKSMOptions.ScoreDisclaimer:SetPoint("BOTTOM", PVEFrame.AZPKSMOptions, "BOTTOM", 2, 0)
     PVEFrame.AZPKSMOptions.ScoreDisclaimer:SetText("|cFFFF0000DISCLAIMER!\nThe API sometimes returns scores not\nmatching the native displayed scores.\nDue to this, scores in this addon could be\noff by up to 0.5 compared to displayed scores.|r")
 
-    PVEFrame.AZPKSMOptions.CommingSoonDisclaimer = PVEFrame.AZPKSMOptions:CreateFontString("PVEFrame.AZPKSMOptions", "ARTWORK", "GameFontNormalLarge")
-    PVEFrame.AZPKSMOptions.CommingSoonDisclaimer:SetSize(PVEFrame.AZPKSMOptions:GetWidth(), 75)
-    PVEFrame.AZPKSMOptions.CommingSoonDisclaimer:SetPoint("BOTTOM", PVEFrame.AZPKSMOptions.ScoreDisclaimer, "TOP", 0, 50)
-    PVEFrame.AZPKSMOptions.CommingSoonDisclaimer:SetText("|cFF00FFFFMore options comming Soon™!|r")
+    PVEFrame.AZPKSMOptions.ComingSoonDisclaimer = PVEFrame.AZPKSMOptions:CreateFontString("PVEFrame.AZPKSMOptions", "ARTWORK", "GameFontNormalLarge")
+    PVEFrame.AZPKSMOptions.ComingSoonDisclaimer:SetSize(PVEFrame.AZPKSMOptions:GetWidth(), 75)
+    PVEFrame.AZPKSMOptions.ComingSoonDisclaimer:SetPoint("BOTTOM", PVEFrame.AZPKSMOptions.ScoreDisclaimer, "TOP", 0, 50)
+    PVEFrame.AZPKSMOptions.ComingSoonDisclaimer:SetText("|cFF00FFFFMore options coming Soon™!|r")
 
     PVEFrame.AZPKSMOptions.CloseButton = CreateFrame("Button", nil, PVEFrame.AZPKSMOptions, "UIPanelCloseButton")
     PVEFrame.AZPKSMOptions.CloseButton:SetSize(24, 24)
