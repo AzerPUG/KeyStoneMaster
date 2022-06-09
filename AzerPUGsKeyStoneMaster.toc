@@ -4,7 +4,7 @@
 ## Notes: AzerPUG's KeyStoneMaster easily track M+ scores and shows your total/averages per dungeon or affix.
 ## Version: SL 9.2.5 (For actual addon version, check KSM.lua)
 ## SavedVariables: AZPKSMLocation
-## SavedVariablesPerCharacter: AZPKSMInfo AZPKSMAttached AZPKSMAutoPopUp
+## SavedVariablesPerCharacter: AZPKSMInfo AZPKSMAttached AZPKSMAutoPopUp AZPKSMBaseScore
 
 DataTable.lua
 SlashCommands.lua
