@@ -219,7 +219,7 @@ function AZP.KeyStoneMaster:OnLoadSelf()
 end
 
 function AZP.KeyStoneMaster:CreateScoresFrame()
-    KSMFrame:SetSize(395, 350)
+    KSMFrame:SetSize(395, 310)
 
     if AZPKSMBaseScore == true then
         KSMFrame:SetWidth(KSMFrame:GetWidth() + 30)

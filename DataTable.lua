@@ -3,16 +3,14 @@ if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 
 AZP.KeyStoneMaster.KeyList =
 {
-    [375] = {Name =    "Mists", MapID = 2290, NameFull =       "Mists of Tirna Scithe"},
-    [376] = {Name = "Necrotic", MapID = 2286, NameFull =           "The Necrotic Wake"},
-    [377] = {Name =      "DOS", MapID = 2291, NameFull =               "De Other Side"},
-    [378] = {Name =    "Halls", MapID = 2287, NameFull =          "Halls of Atonement"},
-    [379] = {Name =   "Plague", MapID = 2289, NameFull =                  "Plaguefall"},
-    [380] = {Name =  "Sanguin", MapID = 2284, NameFull =              "Sanguin Depths"},
-    [381] = {Name =   "Spires", MapID = 2285, NameFull =         "Spires of Ascension"},
-    [382] = {Name =  "Theater", MapID = 2293, NameFull =             "Theater of Pain"},
-    [391] = {Name = "T-Street", MapID = 0000, NameFull = "Tazavesh, Streets of Wonder"},
-    [392] = {Name = "T-Gambit", MapID = 0000, NameFull =  "Tazavesh, So'Leah's Gambit"},
+    [227] = {Name =   "Kara-L", NameFull =      "Return to Karazhan: Lower"},
+    [234] = {Name =   "Kara-U", NameFull =      "Return to Karazhan: Upper"},
+    [369] = {Name =  "Mecha-J", NameFull = "Operation: Mechagon - Junkyard"},
+    [370] = {Name =  "Mecha-W", NameFull = "Operation: Mechagon - Workshop"},
+    [169] = {Name =  "I-Docks", NameFull =                     "Iron Docks"},
+    [166] = {Name = "Grimrail", NameFull =                 "Grimrail Depot"},
+    [391] = {Name = "T-Street", NameFull =    "Tazavesh, Streets of Wonder"},
+    [392] = {Name = "T-Gambit", NameFull =     "Tazavesh, So'Leah's Gambit"},
 }
 
 AZP.KeyStoneMaster.Affixes =
