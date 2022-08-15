@@ -181,18 +181,35 @@ AZP.KeyStoneMaster.ItemIDs =
 }
 
 
+--[[
 
+[240] = -- OffHand, 1H Agi/Str
+    {
+        BonusIDs = {8203, 8204, 8205, 8206, 8207, 8208, 8209, 8210, 8211, 8212, 8213, 8214,},
+    },
+[241] = -- 2H (Gun + Staff + 2h STR Mace)
+    {
+        BonusIDs = {8189, 8190, 8191, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200,},
+    },
+[242] = -- 1H Int
+    {
+        BonusIDs = {8231, 8232, 8233, 8234, 8235, 8236, 8237, 8238, 8239, 8240, 8241, 8242,},
+    },
+[243] = -- Head, Legs, Chest
+    {
+        BonusIDs = {8245, 8246, 8247, 8248, 8249, 8250, 8251, 8252, 8253, 8254, 8255, 8256,},
+    },
+[244] = -- Back, Wrist, Finger, Neck
+    {
+        BonusIDs = {8273, 8274, 8275, 8276, 8277, 8278, 8279, 8280, 8281, 8282, 8283, 8284,},
+    },
+[245] = -- Trinket, Hands, Feet, Waist, Shoulder
+    {
+        BonusIDs = {8259, 8260, 8261, 8262, 8263, 8264, 8265, 8266, 8267, 8268, 8269, 8270,},
+    },
+[246] = -- Shield
+    {
+        BonusIDs = {8217, 8218, 8219, 8220, 8221, 8222, 8223, 8224, 8225, 8226, 8227, 8228,},
+    },
 
-    -- -- 228: Trinket / Shoulders / Head
-    -- [7773] = {CurRank =  1, NextRankID = 7774, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7774] = {CurRank =  2, NextRankID = 7775, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7775] = {CurRank =  3, NextRankID = 7776, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7776] = {CurRank =  4, NextRankID = 7777, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7777] = {CurRank =  5, NextRankID = 7778, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7778] = {CurRank =  6, NextRankID = 7779, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7779] = {CurRank =  7, NextRankID = 7780, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7780] = {CurRank =  8, NextRankID = 7781, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7781] = {CurRank =  9, NextRankID = 7782, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7782] = {CurRank = 10, NextRankID = 7783, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7783] = {CurRank = 11, NextRankID = 7784, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = 400},
-    -- [7784] = {CurRank = 12, NextRankID =  nil, MaxRank = 12, Icon = AZP.ToolTips.Currencies.Valor, Amount = nil},
+--]]
