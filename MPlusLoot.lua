@@ -83,9 +83,11 @@ function AZP.KeyStoneMaster.EncJournal:ToolTips(itemLink)
         local rankBonusID, iLevelBonusID = 0, 0
 
         for GroupID, GroupData in pairs(AZP.KeyStoneMaster.ItemIDs) do
-            if tContains(GroupData.ItemIDs, itemID) then
-                rankBonusID = GroupData.BonusIDs[curWantedMythicLevel]
-                iLevelBonusID = AZP.KeyStoneMaster.iLevelBonusIDs[curWantedMythicLevel]
+            for _, GroupEntry in ipairs(GroupData) do
+                if tContains(GroupEntry.ItemIDs, itemID) then
+                    rankBonusID = GroupEntry.BonusIDs[curWantedMythicLevel]
+                    iLevelBonusID = GroupEntry.iLevelBonusIDs[curWantedMythicLevel]
+                end
             end
         end
 
@@ -103,8 +105,8 @@ function AZP.KeyStoneMaster.EncJournal:ToolTips(itemLink)
 
         -- 8281 (Rank 9/12)
         -- 3167 (iLVL 288)
-        --local replaceString = string.format(":33:3:%d:%d:6646:", rankBonusID, iLevelBonusID)
-        local replaceString = ":23:2:3170:6646:"
+        local replaceString = string.format(":33:3:%d:%d:6646:", rankBonusID, iLevelBonusID)
+        --local replaceString = ":23:2:3170:6646:"
         local changedItemLink = itemLink:gsub(":23:1:3524:", replaceString)
         print(string.format("Changed Link %s", changedItemLink:gsub("|", "||")))
 
