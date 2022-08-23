@@ -9,9 +9,9 @@ local OGSetItem = nil
 local curWantedMythicLevel = 1
 local MythicLevelOptions = {  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,}
 local MythicRewardRankD  = {  1,   1,   2,   3,   4,   5,   5,   6,   6,   7,   7,   8,   8,   9,   9,}
-local MythicILevelsD     = {236, 236, 239, 242, 246, 249, 249, 252, 252, 255, 255, 259, 259, 262, 262,}
+local MythicILevelsD     = {262, 262, 265, 268, 272, 275, 275, 278, 278, 281, 281, 285, 285, 288, 288,}
 local MythicRewardRankV  = {  0,   4,   4,   4,   5,   5,   6,   7,   7,   8,   9,  10,  10,  11,  12,}
-local MythicILevelsV     = {  0, 252, 252, 252, 255, 255, 259, 262, 262, 265, 268, 272, 272, 275, 278,}
+local MythicILevelsV     = {  0, 278, 278, 278, 281, 281, 285, 288, 288, 291, 294, 298, 298, 301, 304,}
 
 --      M+      D/12    DiLevel     V/12    ViLevel
 --      M+ - Dungeon - Vault
@@ -64,7 +64,7 @@ function AZP.KeyStoneMaster.EncJournal:OnLoad()
             local v1, v2, v3, v4, v5 = EncounterJournalSearchBox:GetPoint()
             EncounterJournalSearchBox:SetPoint(v1, v2, v3, v4, v5 - 12)
 
-            AZP.KeyStoneMaster.EncJournal:DropDownStuff(1, "  M+1  -  1/12 (236)  -             N/A")
+            AZP.KeyStoneMaster.EncJournal:DropDownStuff(1, "  M+1  -  1/12 (262)  -             N/A")
         end)
 end
 
@@ -90,28 +90,8 @@ function AZP.KeyStoneMaster.EncJournal:ToolTips(itemLink)
                 end
             end
         end
-
-        print(string.format("Unchanged Link %s", itemLink:gsub("|", "||")))
-        -- 50+ Unchanged Link |cffa335ee|Hitem:142215:    :::::::60:102::23:1:3524:1:28:1169:::::|h[Wine-Stained Mantle]|h|r
-        -- 288  Equipped Link |cffa335ee|Hitem:142215:6202:::::::60:102::35:8:7359:8281:8765:8136:8138:6652:3167:6646::::::|h[Wine-Stained Mantle]|h|r
-        -- 128   Changed Link |cffa335ee|Hitem:142215:    :::::::60:102::33:3:8273:1550:6646:1:28:1180:::::|h[Wine-Stained Mantle]|h|r
-
-
-
-
-        -- 50+ Unchanged Link :1:3524
-        -- 288  Equipped Link :8:7359:8281:8765:8136:8138:6652:3167:6646
-        -- 128   Changed Link :3:8273:1550:6646
-
-        -- 8281 (Rank 9/12)
-        -- 3167 (iLVL 288)
         local replaceString = string.format(":33:3:%d:%d:6646:", rankBonusID, iLevelBonusID)
-        --local replaceString = ":23:2:3170:6646:"
         local changedItemLink = itemLink:gsub(":23:1:3524:", replaceString)
-        print(string.format("Changed Link %s", changedItemLink:gsub("|", "||")))
-
-        -- local replaceString = string.format(":35:5:%d:%d:6652:3167:6646:", rankBonusID, iLevelBonusID)
-        -- local changedItemLink = itemLink:gsub(":23:1:3524:", replaceString)
         return changedItemLink
     end
     return nil
