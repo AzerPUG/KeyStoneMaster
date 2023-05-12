@@ -3,14 +3,16 @@ if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 
 AZP.KeyStoneMaster.KeyList =
 {
-    [227] = {Name =   "Kara-L", NameFull =      "Return to Karazhan: Lower"},
-    [234] = {Name =   "Kara-U", NameFull =      "Return to Karazhan: Upper"},
-    [369] = {Name =  "Mecha-J", NameFull = "Operation: Mechagon - Junkyard"},
-    [370] = {Name =  "Mecha-W", NameFull = "Operation: Mechagon - Workshop"},
-    [169] = {Name =  "I-Docks", NameFull =                     "Iron Docks"},
-    [166] = {Name = "Grimrail", NameFull =                 "Grimrail Depot"},
-    [391] = {Name = "T-Street", NameFull =    "Tazavesh, Streets of Wonder"},
-    [392] = {Name = "T-Gambit", NameFull =     "Tazavesh, So'Leah's Gambit"},
+    [206] = {Name =  "NLair", NameFull =     "Neltharion's Lair"},
+    [245] = {Name =  "FreeH", NameFull =              "Freehold"},
+    [251] = {Name =   "URot", NameFull =          "The Underrot"},
+    [403] = {Name =   "Ulda", NameFull = "Uldaman Legacy of Tyr"},
+    [404] = {Name =  "Nelth", NameFull =             "Neltharus"},
+    [405] = {Name =  "Brack", NameFull =    "Brackenhide Hollow"},
+    [406] = {Name =  "Halls", NameFull =     "Halls of Infusion"},
+    [438] = {Name = "Vortex", NameFull =   "The Vortex Pinnacle"},
+
+    --/script for i = 1, 10000 do if C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i) ~= nil then print("DungeonIndex:", i, "     - ", C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i)) end end
 }
 
 AZP.KeyStoneMaster.Affixes =
@@ -30,7 +32,6 @@ AZP.KeyStoneMaster.Affixes =
     [130] =  "Encrypted",
     [131] =   "Shrouded",
 }
-
 
     -- dreanor/legion/bfa/sl
     -- [3147/3141/1656/1579] = {Rank =  1, iLevel = 262, Mythic =  2},

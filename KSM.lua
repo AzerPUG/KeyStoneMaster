@@ -1,7 +1,7 @@
 if AZP == nil then AZP = {} end
 if AZP.VersionControl == nil then AZP.VersionControl = {} end
 
-AZP.VersionControl["KeyStoneMaster"] = 15
+AZP.VersionControl["KeyStoneMaster"] = 16
 if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 if AZP.KeyStoneMaster.Events == nil then AZP.KeyStoneMaster.Events = {} end
 
