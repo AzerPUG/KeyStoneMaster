@@ -3,14 +3,14 @@ if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 
 AZP.KeyStoneMaster.KeyList =
 {
-    [168] = {Name = "EBloom", NameFull = "The Everbloom"},
-    [198] = {Name =  "DTick", NameFull = "Freehold"},
-    [199] = {Name =    "BRH", NameFull = "Black Rook Hold"},
-    [244] = {Name = "ADazar", NameFull = "Atal'Dazar"},
-    [248] = {Name = "WManor", NameFull = "Waycrest Manor"},
-    [456] = {Name =   "TotT", NameFull = "Throne of the Tides"},
-    [463] = {Name =  "GFall", NameFull = "Dawn of the Infinite: Galakrond's Fall"},
-    [464] = {Name =  "MRise", NameFull = "Dawn of the Infinite: Murozond's Rise"},
+    [399] = {Name =   "Ruby", NameFull = "Ruby Life Pools"},
+    [400] = {Name = "Nokhud", NameFull = "The Kokhud Offensive"},
+    [401] = {Name =  "Vault", NameFull = "The Azure Vault"},
+    [402] = {Name = "Algeth", NameFull = "Algeth'Ar Academy"},
+    [403] = {Name =   "Ulda", NameFull = "Uldaman: Legacy of Tyr"},
+    [404] = {Name =  "Nelth", NameFull = "Neltharus"},
+    [405] = {Name =  "Brack", NameFull = "Brackenhide Hollow"},
+    [406] = {Name =  "Halls", NameFull = "Halls of Infusion"},
 
     --/script for i = 1, 10000 do if C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i) ~= nil then print("DungeonIndex:", i, "     - ", C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i)) end end
 }
