@@ -20,27 +20,25 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     EventFrame:RegisterEvent("PLAYER_LOGIN")
     EventFrame:SetScript("OnEvent", function(...) AZP.KeyStoneMaster:OnEvent(...) end)
 
-    KSMFrame = CreateFrame("FRAME", nil, UIParent, "BackdropTemplate")
+    KSMFrame = CreateFrame("FRAME", nil, UIParent, "BasicFrameTemplateWithInset")
     KSMFrame:SetPoint("CENTER", 0, 0)
     KSMFrame:EnableMouse(true)
     KSMFrame:SetMovable(true)
     KSMFrame:RegisterForDrag("LeftButton")
     KSMFrame:SetScript("OnDragStart", KSMFrame.StartMoving)
     KSMFrame:SetScript("OnDragStop", function() KSMFrame:StopMovingOrSizing() AZP.KeyStoneMaster:SaveMainFrameLocation() end)
-    KSMFrame:SetBackdrop({
-        bgFile = "Interface/Tooltips/UI-Tooltip-Background",
-        edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
-        edgeSize = 24,
-        insets = { left = 5, right = 5, top = 5, bottom = 5 },
-    })
-    KSMFrame:SetBackdropColor(0.5, 0.5, 0.5, 1)
 
-    KSMFrame.Header = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalHuge")
-    KSMFrame.Header:SetPoint("TOP", 0, -10)
-    KSMFrame.Header:SetText(string.format("|cFF00FFFFAzerPUG's KeyStoneMaster v%s|r", AZP.VersionControl["KeyStoneMaster"]))
+    KSMFrame.Header = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
+    KSMFrame.Header:SetPoint("TOP", -15, 0)
+    KSMFrame.Header:SetText("|cFF00FFFFKeyStoneMaster|r")
+
+    
+    KSMFrame.Footer = KSMFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalSmall")
+    KSMFrame.Footer:SetPoint("BOTTOMRIGHT", -10, 10)
+    KSMFrame.Footer:SetText(string.format("By AzerPUG - v%s", AZP.VersionControl["KeyStoneMaster"]))
 
     KSMFrame.FramesHeader = CreateFrame("FRAME", nil, KSMFrame)
-    KSMFrame.FramesHeader:SetPoint("TOPLEFT", KSMFrame.Header, "BOTTOMLEFT", 0, -5)
+    KSMFrame.FramesHeader:SetPoint("TOPLEFT", KSMFrame.Header, "BOTTOMLEFT", 15, -5)
 
     KSMFrame.FramesHeader.Name = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.FramesHeader.Name:SetSize(100, 25)
@@ -72,7 +70,7 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.TotalFrame.Name = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.TotalFrame.Name:SetSize(100, KSMFrame.TotalFrame:GetHeight())
     KSMFrame.TotalFrame.Name:SetPoint("LEFT", 0, 0)
-    KSMFrame.TotalFrame.Name:SetText("|cFF00FFFFTotal|r")
+    KSMFrame.TotalFrame.Name:SetText("Total")
 
     -- KSMFrame.TotalFrame.TScore = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     -- KSMFrame.TotalFrame.TScore:SetPoint("LEFT", KSMFrame.TotalFrame.Name, "RIGHT", 0, 0)
@@ -86,11 +84,6 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.TotalFrame.TotalScore:SetSize(100, KSMFrame.TotalFrame:GetHeight())
     KSMFrame.TotalFrame.TotalScore:SetPoint("LEFT", KSMFrame.TotalFrame.Name, "RIGHT", 10, 0)
     KSMFrame.TotalFrame.TotalScore:SetText("|cFF00FFFF??|r")
-
-    KSMFrame.CloseButton = CreateFrame("Button", nil, KSMFrame, "UIPanelCloseButton")
-    KSMFrame.CloseButton:SetSize(24, 24)
-    KSMFrame.CloseButton:SetPoint("TOPRIGHT", KSMFrame, "TOPRIGHT", -3, -3)
-    KSMFrame.CloseButton:SetScript("OnClick", function() AZP.KeyStoneMaster:ToggleScoreFrame() end)
 
     KSMFrame.LoadingBar = CreateFrame("StatusBar", nil, KSMFrame)
     KSMFrame.LoadingBar:SetPoint("CENTER", 0, 0)
@@ -220,7 +213,7 @@ function AZP.KeyStoneMaster:OnLoadSelf()
 end
 
 function AZP.KeyStoneMaster:CreateScoresFrame()
-    KSMFrame:SetSize(395, 310)
+    KSMFrame:SetSize(230, 305)
 
     -- if AZPKSMBaseScore == true then
     --     -- KSMFrame:SetWidth(KSMFrame:GetWidth() + 30)
@@ -251,7 +244,7 @@ function AZP.KeyStoneMaster:CreateScoresFrame()
         curFrame.Name = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
         curFrame.Name:SetSize(100, curFrame:GetHeight())
         curFrame.Name:SetPoint("LEFT", 0, 0)
-        curFrame.Name:SetText(string.format("|cFF00FFFF%s|r", Info.Name))
+        curFrame.Name:SetText(Info.Name)
 
         -- curFrame.TBScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
         -- curFrame.TBScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 0, 0)
@@ -395,8 +388,7 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
 
     -- KSMFrame.TotalFrame.TScore:SetText(string.format("%s%.1f|r", TColor, allCurInfo.Totals.Tyrannical))
     -- KSMFrame.TotalFrame.FScore:SetText(string.format("%s%.1f|r", FColor, allCurInfo.Totals.Fortified))
-    KSMFrame.TotalFrame.TotalScore:SetText(string.format("|cFF00FFFF%.1f|r",
-        totalScore))
+    KSMFrame.TotalFrame.TotalScore:SetText(string.format("%.1f", totalScore))
 
     AZPKSMInfo[curGUID] = allCurInfo
 end

@@ -9,6 +9,3 @@
 DataTable.lua
 SlashCommands.lua
 KSM.lua
-MPlusLoot.lua
-
-Affixes/Volcanic.lua
