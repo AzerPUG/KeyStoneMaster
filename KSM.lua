@@ -47,18 +47,19 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.FramesHeader.Name:SetPoint("LEFT", 0, 0)
     KSMFrame.FramesHeader.Name:SetText("Name")
 
-    KSMFrame.FramesHeader.Tyrannical = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    KSMFrame.FramesHeader.Tyrannical:SetPoint("LEFT", KSMFrame.FramesHeader.Name, "RIGHT", 0, 0)
-    KSMFrame.FramesHeader.Tyrannical:SetText("Tyrannical")
+    -- KSMFrame.FramesHeader.Tyrannical = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK",
+    --     "GameFontNormalLarge")
+    -- KSMFrame.FramesHeader.Tyrannical:SetPoint("LEFT", KSMFrame.FramesHeader.Name, "RIGHT", 0, 0)
+    -- KSMFrame.FramesHeader.Tyrannical:SetText("Tyrannical")
 
-    KSMFrame.FramesHeader.Fortified = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    KSMFrame.FramesHeader.Fortified:SetPoint("LEFT", KSMFrame.FramesHeader.Tyrannical, "RIGHT", 10, 0)
-    KSMFrame.FramesHeader.Fortified:SetText("Fortified")
+    -- KSMFrame.FramesHeader.Fortified = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
+    -- KSMFrame.FramesHeader.Fortified:SetPoint("LEFT", KSMFrame.FramesHeader.Tyrannical, "RIGHT", 10, 0)
+    -- KSMFrame.FramesHeader.Fortified:SetText("Fortified")
 
     KSMFrame.FramesHeader.Total = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.FramesHeader.Total:SetSize(50, 25)
-    KSMFrame.FramesHeader.Total:SetPoint("LEFT", KSMFrame.FramesHeader.Fortified, "RIGHT", 10, 0)
-    KSMFrame.FramesHeader.Total:SetText("Total")
+    KSMFrame.FramesHeader.Total:SetPoint("LEFT", KSMFrame.FramesHeader.Name, "RIGHT", 10, 0)
+    KSMFrame.FramesHeader.Total:SetText("Score")
 
     KSMFrame.FramesHeader.Percent = KSMFrame.FramesHeader:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.FramesHeader.Percent:SetSize(50, 25)
@@ -73,17 +74,17 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.TotalFrame.Name:SetPoint("LEFT", 0, 0)
     KSMFrame.TotalFrame.Name:SetText("|cFF00FFFFTotal|r")
 
-    KSMFrame.TotalFrame.TScore = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    KSMFrame.TotalFrame.TScore:SetPoint("LEFT", KSMFrame.TotalFrame.Name, "RIGHT", 0, 0)
-    KSMFrame.TotalFrame.TScore:SetText("|cFF00FFFF??|r")
+    -- KSMFrame.TotalFrame.TScore = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
+    -- KSMFrame.TotalFrame.TScore:SetPoint("LEFT", KSMFrame.TotalFrame.Name, "RIGHT", 0, 0)
+    -- KSMFrame.TotalFrame.TScore:SetText("|cFF00FFFF??|r")
 
-    KSMFrame.TotalFrame.FScore = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
-    KSMFrame.TotalFrame.FScore:SetPoint("LEFT", KSMFrame.TotalFrame.TScore, "RIGHT", 10, 0)
-    KSMFrame.TotalFrame.FScore:SetText("|cFF00FFFF??|r")
+    -- KSMFrame.TotalFrame.FScore = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
+    -- KSMFrame.TotalFrame.FScore:SetPoint("LEFT", KSMFrame.TotalFrame.TScore, "RIGHT", 10, 0)
+    -- KSMFrame.TotalFrame.FScore:SetText("|cFF00FFFF??|r")
 
     KSMFrame.TotalFrame.TotalScore = KSMFrame.TotalFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormalLarge")
     KSMFrame.TotalFrame.TotalScore:SetSize(100, KSMFrame.TotalFrame:GetHeight())
-    KSMFrame.TotalFrame.TotalScore:SetPoint("LEFT", KSMFrame.TotalFrame.FScore, "RIGHT", 10, 0)
+    KSMFrame.TotalFrame.TotalScore:SetPoint("LEFT", KSMFrame.TotalFrame.Name, "RIGHT", 10, 0)
     KSMFrame.TotalFrame.TotalScore:SetText("|cFF00FFFF??|r")
 
     KSMFrame.CloseButton = CreateFrame("Button", nil, KSMFrame, "UIPanelCloseButton")
@@ -109,7 +110,7 @@ function AZP.KeyStoneMaster:OnLoadSelf()
     KSMFrame.LoadingBar.Text:SetPoint("CENTER", 0, 0)
     KSMFrame.LoadingBar.Text:SetText("Loading Scores...")
     KSMFrame.LoadingBar.Text:SetJustifyH("CENTER")
-    KSMFrame.LoadingBar.Text:SetJustifyV("CENTER")
+    --KSMFrame.LoadingBar.Text:SetJustifyV("CENTER")
 
     KSMFrame.LoadingBar:Hide()
 
@@ -221,18 +222,18 @@ end
 function AZP.KeyStoneMaster:CreateScoresFrame()
     KSMFrame:SetSize(395, 310)
 
-    if AZPKSMBaseScore == true then
-        KSMFrame:SetWidth(KSMFrame:GetWidth() + 30)
-        KSMFrame.FramesHeader.Tyrannical:SetSize(100, 25)
-        KSMFrame.FramesHeader.Fortified:SetSize(100, 25)
-        KSMFrame.TotalFrame.TScore:SetSize(100, KSMFrame.TotalFrame:GetHeight())
-        KSMFrame.TotalFrame.FScore:SetSize(100, KSMFrame.TotalFrame:GetHeight())
-    elseif AZPKSMBaseScore == false then
-        KSMFrame.FramesHeader.Tyrannical:SetSize(85, 25)
-        KSMFrame.FramesHeader.Fortified:SetSize(85, 25)
-        KSMFrame.TotalFrame.TScore:SetSize(85, KSMFrame.TotalFrame:GetHeight())
-        KSMFrame.TotalFrame.FScore:SetSize(85, KSMFrame.TotalFrame:GetHeight())
-    end
+    -- if AZPKSMBaseScore == true then
+    --     -- KSMFrame:SetWidth(KSMFrame:GetWidth() + 30)
+    --     -- KSMFrame.FramesHeader.Tyrannical:SetSize(100, 25)
+    --     -- KSMFrame.FramesHeader.Fortified:SetSize(100, 25)
+    --     -- KSMFrame.TotalFrame.TScore:SetSize(100, KSMFrame.TotalFrame:GetHeight())
+    --     -- KSMFrame.TotalFrame.FScore:SetSize(100, KSMFrame.TotalFrame:GetHeight())
+    -- elseif AZPKSMBaseScore == false then
+    --     -- KSMFrame.FramesHeader.Tyrannical:SetSize(85, 25)
+    --     -- KSMFrame.FramesHeader.Fortified:SetSize(85, 25)
+    --     -- KSMFrame.TotalFrame.TScore:SetSize(85, KSMFrame.TotalFrame:GetHeight())
+    --     -- KSMFrame.TotalFrame.FScore:SetSize(85, KSMFrame.TotalFrame:GetHeight())
+    -- end
 
     KSMFrame.Header:SetSize(KSMFrame:GetWidth(), 25)
     KSMFrame.FramesHeader:SetSize(KSMFrame:GetWidth() - 10, 25)
@@ -252,23 +253,23 @@ function AZP.KeyStoneMaster:CreateScoresFrame()
         curFrame.Name:SetPoint("LEFT", 0, 0)
         curFrame.Name:SetText(string.format("|cFF00FFFF%s|r", Info.Name))
 
-        curFrame.TBScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
-        curFrame.TBScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 0, 0)
-        curFrame.TBScore:SetText("|cFFFF0000??|r")
+        -- curFrame.TBScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
+        -- curFrame.TBScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 0, 0)
+        -- curFrame.TBScore:SetText("|cFFFF0000??|r")
 
-        curFrame.TMScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
-        curFrame.TMScore:SetText("|cFFFF0000??|r")
+        -- curFrame.TMScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
+        -- curFrame.TMScore:SetText("|cFFFF0000??|r")
 
-        curFrame.FBScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
-        curFrame.FBScore:SetPoint("LEFT", curFrame.TMScore, "RIGHT", 10, 0)
-        curFrame.FBScore:SetText("|cFFFF0000??|r")
+        -- curFrame.FBScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
+        -- curFrame.FBScore:SetPoint("LEFT", curFrame.TMScore, "RIGHT", 10, 0)
+        -- curFrame.FBScore:SetText("|cFFFF0000??|r")
 
-        curFrame.FMScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
-        curFrame.FMScore:SetText("|cFFFF0000??|r")
+        -- curFrame.FMScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
+        -- curFrame.FMScore:SetText("|cFFFF0000??|r")
 
         curFrame.TotalScore = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
         curFrame.TotalScore:SetSize(50, curFrame:GetHeight())
-        curFrame.TotalScore:SetPoint("LEFT", curFrame.FMScore, "RIGHT", 10, 0)
+        curFrame.TotalScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 10, 0)
         curFrame.TotalScore:SetText("|cFFFF0000??|r")
 
         curFrame.Percentage = curFrame:CreateFontString("KSMFrame", "ARTWORK", "GameFontNormal")
@@ -276,31 +277,24 @@ function AZP.KeyStoneMaster:CreateScoresFrame()
         curFrame.Percentage:SetPoint("LEFT", curFrame.TotalScore, "RIGHT", 0, 0)
         curFrame.Percentage:SetText("|cFFFF0000??|r")
 
-        if AZPKSMBaseScore == true then
-            curFrame.TBScore:SetSize(50, curFrame:GetHeight())
-            curFrame.TMScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 50, 0)
-            curFrame.TMScore:SetSize(50, curFrame:GetHeight())
-            curFrame.FBScore:SetSize(50, curFrame:GetHeight())
-            curFrame.FMScore:SetPoint("LEFT", curFrame.TMScore, "RIGHT", 50, 0)
-            curFrame.FMScore:SetSize(50, curFrame:GetHeight())
-        elseif AZPKSMBaseScore == false then
-            curFrame.TBScore:SetSize(0, curFrame:GetHeight())
-            curFrame.TMScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 0, 0)
-            curFrame.TMScore:SetSize(85, curFrame:GetHeight())
-            curFrame.FBScore:SetSize(0, curFrame:GetHeight())
-            curFrame.FMScore:SetPoint("LEFT", curFrame.TMScore, "RIGHT", 10, 0)
-            curFrame.FMScore:SetSize(85, curFrame:GetHeight())
-        end
+        -- if AZPKSMBaseScore == true then
+        --     curFrame.TBScore:SetSize(50, curFrame:GetHeight())
+        --     curFrame.TMScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 50, 0)
+        --     curFrame.TMScore:SetSize(50, curFrame:GetHeight())
+        --     curFrame.FBScore:SetSize(50, curFrame:GetHeight())
+        --     curFrame.FMScore:SetPoint("LEFT", curFrame.TMScore, "RIGHT", 50, 0)
+        --     curFrame.FMScore:SetSize(50, curFrame:GetHeight())
+        -- elseif AZPKSMBaseScore == false then
+        --     curFrame.TBScore:SetSize(0, curFrame:GetHeight())
+        --     curFrame.TMScore:SetPoint("LEFT", curFrame.Name, "RIGHT", 0, 0)
+        --     curFrame.TMScore:SetSize(85, curFrame:GetHeight())
+        --     curFrame.FBScore:SetSize(0, curFrame:GetHeight())
+        --     curFrame.FMScore:SetPoint("LEFT", curFrame.TMScore, "RIGHT", 10, 0)
+        --     curFrame.FMScore:SetSize(85, curFrame:GetHeight())
+        -- end
 
         KeyFrames.Number = KeyFrames.Number + 1
         KeyFrames[ID] = curFrame
-    end
-end
-
-function AZP.KeyStoneMaster.AffixLoader()
-    local Affixes = C_MythicPlus.GetCurrentAffixes()
-    for i = 1, #Affixes do
-        if AZP.KeyStoneMaster[AZP.KeyStoneMaster.Affixes[i]] ~= nil then AZP.KeyStoneMaster[AZP.KeyStoneMaster.Affixes[i]]:OnLoadSelf() end
     end
 end
 
@@ -316,9 +310,7 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
     local totalScore = 0
     allCurInfo.Max = 0
     allCurInfo.Min = 1000
-    allCurInfo.Totals = {}
-    allCurInfo.Totals.Tyrannical = 0
-    allCurInfo.Totals.Fortified = 0
+
 
     local KeyList = AZP.KeyStoneMaster.KeyList
     for ID, Info in pairs(KeyList) do
@@ -327,55 +319,61 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
         allCurInfo[ID].Score = 0
         allCurInfo[ID].Color = ""
         local curInfo = C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(ID)
-        if curInfo ~= nil then
-            if curInfo[1] ~= nil then allCurInfo[ID][curInfo[1].name] = {Score = curInfo[1].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
-            if curInfo[2] ~= nil then allCurInfo[ID][curInfo[2].name] = {Score = curInfo[2].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+        if curInfo ~= nil and curInfo[1] ~= nil then
+            allCurInfo[ID] = { Score = curInfo[1].score, Color = "FFFFFF00", Multiplier = 1, MScore = 0 }
+            totalScore = totalScore + curInfo[1].score
         end
+        
+
+        -- if curInfo[2] ~= nil then allCurInfo[ID][curInfo[2].name] = {Score = curInfo[2].score, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+
         -- Move these default assignments to above the curInfo, and always intialize Tyrannical and Fortiefied with score == 0.
         -- Then change code above to only update the score of the already intialized tables.
-        if allCurInfo[ID].Tyrannical == nil then allCurInfo[ID].Tyrannical = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
-        if allCurInfo[ID].Fortified == nil then allCurInfo[ID].Fortified = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+        -- if allCurInfo[ID].Tyrannical == nil then allCurInfo[ID].Tyrannical = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
+        -- if allCurInfo[ID].Fortified == nil then allCurInfo[ID].Fortified = {Score = 0, Color = "FFFFFF00", Multiplier = 0.50, MScore = 0} end
 
-        if allCurInfo[ID].Tyrannical.Score > allCurInfo[ID].Fortified.Score then
-            allCurInfo[ID].Tyrannical.Color = "FF00FF00"
-            allCurInfo[ID].Tyrannical.Multiplier = 1.5
-        else
-            allCurInfo[ID].Fortified.Color = "FF00FF00"
-            allCurInfo[ID].Fortified.Multiplier = 1.5
-        end
-        allCurInfo[ID].Fortified.MScore = allCurInfo[ID].Fortified.Score * allCurInfo[ID].Fortified.Multiplier
-        allCurInfo[ID].Tyrannical.MScore = allCurInfo[ID].Tyrannical.Score * allCurInfo[ID].Tyrannical.Multiplier
-        allCurInfo[ID].Score = allCurInfo[ID].Fortified.MScore + allCurInfo[ID].Tyrannical.MScore
+        -- if allCurInfo[ID].Tyrannical.Score > allCurInfo[ID].Fortified.Score then
+        --     allCurInfo[ID].Tyrannical.Color = "FF00FF00"
+        --     allCurInfo[ID].Tyrannical.Multiplier = 1.5
+        -- else
+        --     allCurInfo[ID].Fortified.Color = "FF00FF00"
+        --     allCurInfo[ID].Fortified.Multiplier = 1.5
+        -- end
+        -- allCurInfo[ID].Fortified.MScore = allCurInfo[ID].Fortified.Score * allCurInfo[ID].Fortified.Multiplier
+        -- allCurInfo[ID].Tyrannical.MScore = allCurInfo[ID].Tyrannical.Score * allCurInfo[ID].Tyrannical.Multiplier
+        -- allCurInfo[ID].Score = allCurInfo[ID].Fortified.MScore + allCurInfo[ID].Tyrannical.MScore
 
-        allCurInfo.Totals.Tyrannical = allCurInfo.Totals.Tyrannical + allCurInfo[ID].Tyrannical.MScore
-        allCurInfo.Totals.Fortified = allCurInfo.Totals.Fortified + allCurInfo[ID].Fortified.MScore
+        -- allCurInfo.Totals.Tyrannical = allCurInfo.Totals.Tyrannical + allCurInfo[ID].Tyrannical.MScore
+        -- allCurInfo.Totals.Fortified = allCurInfo.Totals.Fortified + allCurInfo[ID].Fortified.MScore
 
-        local curInfoID = allCurInfo[ID]
-        local curTyr = curInfoID.Tyrannical
-        local curFort = curInfoID.Fortified
+        -- local curInfoID = allCurInfo[ID]
+        -- local curTyr = curInfoID.Tyrannical
+        -- local curFort = curInfoID.Fortified
 
-        if AZPKSMBaseScore == true then
-            KeyFrames[ID].TBScore:SetText(string.format("|c%s%s|r", curTyr.Color, curTyr.Score))
-            KeyFrames[ID].TMScore:SetText(string.format("|c%s(%.1f)|r", curTyr.Color, curTyr.MScore))
-            KeyFrames[ID].FBScore:SetText(string.format("|c%s%s|r", curFort.Color, curFort.Score))
-            KeyFrames[ID].FMScore:SetText(string.format("|c%s(%.1f)|r", curFort.Color, curFort.MScore))
-        elseif AZPKSMBaseScore == false then
-            KeyFrames[ID].TBScore:SetText(string.format("", curTyr.Color, curTyr.Score))
-            KeyFrames[ID].TMScore:SetText(string.format("|c%s%.1f|r", curTyr.Color, curTyr.MScore))
-            KeyFrames[ID].FBScore:SetText(string.format("", curFort.Color, curFort.Score))
-            KeyFrames[ID].FMScore:SetText(string.format("|c%s%.1f|r", curFort.Color, curFort.MScore))
-        end
+        -- if AZPKSMBaseScore == true then
+        --     KeyFrames[ID].TBScore:SetText(string.format("|c%s%s|r", curTyr.Color, curTyr.Score))
+        --     KeyFrames[ID].TMScore:SetText(string.format("|c%s(%.1f)|r", curTyr.Color, curTyr.MScore))
+        --     KeyFrames[ID].FBScore:SetText(string.format("|c%s%s|r", curFort.Color, curFort.Score))
+        --     KeyFrames[ID].FMScore:SetText(string.format("|c%s(%.1f)|r", curFort.Color, curFort.MScore))
+        -- elseif AZPKSMBaseScore == false then
+        --     KeyFrames[ID].TBScore:SetText(string.format("", curTyr.Color, curTyr.Score))
+        --     KeyFrames[ID].TMScore:SetText(string.format("|c%s%.1f|r", curTyr.Color, curTyr.MScore))
+        --     KeyFrames[ID].FBScore:SetText(string.format("", curFort.Color, curFort.Score))
+        --     KeyFrames[ID].FMScore:SetText(string.format("|c%s%.1f|r", curFort.Color, curFort.MScore))
+        -- end
 
-        local curTotScore = curTyr.MScore + curFort.MScore
-        totalScore = totalScore + curTotScore
+        -- local curTotScore = curTyr.MScore + curFort.MScore
+        -- totalScore = allCurInfo[ID].Score
     end
 
     for ID, Info in pairs(KeyList) do
         if totalScore ~= 0 then
-            local curPerc = (allCurInfo[ID].Tyrannical.MScore + allCurInfo[ID].Fortified.MScore) / totalScore * 100
+            local curPerc = allCurInfo[ID].Score / totalScore * 100
             allCurInfo[ID].Percentage = curPerc
             KeyFrames[ID].Percentage:SetText(string.format("|cFF00FFFF%.2f|r", curPerc))
-        else allCurInfo[ID].Percentage = "?" end
+        else
+            allCurInfo[ID].Percentage = "?"
+        end
         if allCurInfo.Max < allCurInfo[ID].Score then allCurInfo.Max = allCurInfo[ID].Score end
         if allCurInfo.Min > allCurInfo[ID].Score then allCurInfo.Min = allCurInfo[ID].Score end
     end
@@ -387,17 +385,18 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
 
     local TColor, FColor = nil, nil
 
-    if allCurInfo.Totals.Tyrannical < allCurInfo.Totals.Fortified then
-        TColor = "|cFFFFFF00"
-        FColor = "|cFF00FF00"
-    else
-        TColor = "|cFF00FF00"
-        FColor = "|cFFFFFF00"
-    end
+    -- if allCurInfo.Totals.Tyrannical < allCurInfo.Totals.Fortified then
+    --     TColor = "|cFFFFFF00"
+    --     FColor = "|cFF00FF00"
+    -- else
+    --     TColor = "|cFF00FF00"
+    --     FColor = "|cFFFFFF00"
+    -- end
 
-    KSMFrame.TotalFrame.TScore:SetText(string.format("%s%.1f|r", TColor, allCurInfo.Totals.Tyrannical))
-    KSMFrame.TotalFrame.FScore:SetText(string.format("%s%.1f|r", FColor, allCurInfo.Totals.Fortified))
-    KSMFrame.TotalFrame.TotalScore:SetText(string.format("|cFF00FFFF%.1f|r", (allCurInfo.Totals.Tyrannical + allCurInfo.Totals.Fortified)))
+    -- KSMFrame.TotalFrame.TScore:SetText(string.format("%s%.1f|r", TColor, allCurInfo.Totals.Tyrannical))
+    -- KSMFrame.TotalFrame.FScore:SetText(string.format("%s%.1f|r", FColor, allCurInfo.Totals.Fortified))
+    KSMFrame.TotalFrame.TotalScore:SetText(string.format("|cFF00FFFF%.1f|r",
+        totalScore))
 
     AZPKSMInfo[curGUID] = allCurInfo
 end
@@ -451,7 +450,10 @@ function AZP.KeyStoneMaster.MPlusUpdateScores()
     LoadingBarTicker = 0
     KSMFrame.LoadingBar:SetValue(LoadingBarTicker)
     KSMFrame.LoadingBar:Show()
-    C_Timer.After(2.5, function() AZP.KeyStoneMaster.GetAllKeyStoneValues() KSMFrame.LoadingBar:Hide() end)
+    C_Timer.After(2.5, function()
+        AZP.KeyStoneMaster.GetAllKeyStoneValues()
+        KSMFrame.LoadingBar:Hide()
+    end)
     C_Timer.NewTicker(0.25, function() AZP.KeyStoneMaster:TickLoadingBar() end, 10)
 end
 
@@ -529,7 +531,10 @@ function AZP.KeyStoneMaster:OnEvent(self, event, ...)
         if AZPKSMInfo == nil then AZPKSMInfo = {} end
         if AZPKSMInfo[UnitGUID("PLAYER")] == nil then AZPKSMInfo[UnitGUID("PLAYER")] = {} end
 
-        C_Timer.After(5, function() AZP.KeyStoneMaster:CreateScoresFrame() AZP.KeyStoneMaster.GetAllKeyStoneValues() end)
+        C_Timer.After(5, function()
+            AZP.KeyStoneMaster:CreateScoresFrame()
+            AZP.KeyStoneMaster.GetAllKeyStoneValues()
+        end)
     elseif event == "PLAYER_LOGIN" then
         C_MythicPlus.RequestMapInfo()
         C_MythicPlus.RequestCurrentAffixes()

@@ -3,14 +3,18 @@ if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 
 AZP.KeyStoneMaster.KeyList =
 {
-    [399] = {Name =   "Ruby", NameFull = "Ruby Life Pools"},
-    [400] = {Name = "Nokhud", NameFull = "The Kokhud Offensive"},
-    [401] = {Name =  "Vault", NameFull = "The Azure Vault"},
-    [402] = {Name = "Algeth", NameFull = "Algeth'Ar Academy"},
-    [403] = {Name =   "Ulda", NameFull = "Uldaman: Legacy of Tyr"},
-    [404] = {Name =  "Nelth", NameFull = "Neltharus"},
-    [405] = {Name =  "Brack", NameFull = "Brackenhide Hollow"},
-    [406] = {Name =  "Halls", NameFull = "Halls of Infusion"},
+    [353] = {Name =    "Siege", NameFull = "Siege of Boralus"},
+    [375] = {Name =    "Mists", NameFull = "Mists of Tirna Scithe"},
+    [376] = {Name =     "Wake", NameFull = "The Necrotic Wake"},
+    -- [499] = {Name =  "Priory", NameFull = "Priory of the Sacred Flame"},
+    -- [500] = {Name = "Rookery", NameFull = "The Rookery"},
+    [501] = {Name =   "SVault", NameFull = "The Stonevault"},
+    [502] = {Name =  "Threads", NameFull = "City of Threads"},
+    [503] = {Name =  "AraKara", NameFull = "Ara-Kara, City of Echoes"},
+    -- [504] = {Name =   "DCleft", NameFull = "Darkflame Cleft"},
+    [505] = {Name = "DBreaker", NameFull = "The Dawnbreaker"},
+    -- [506] = {Name = "Meadery", NameFull = "Cinderbrew Meadery"},
+    [507] = {Name =   "GBatol", NameFull = "Grim Batol"},
 
     --/script for i = 1, 10000 do if C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i) ~= nil then print("DungeonIndex:", i, "     - ", C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i)) end end
 }
