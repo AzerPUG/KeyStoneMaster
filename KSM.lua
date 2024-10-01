@@ -311,10 +311,10 @@ function AZP.KeyStoneMaster.GetAllKeyStoneValues()
         allCurInfo[ID].Percentage = 0
         allCurInfo[ID].Score = 0
         allCurInfo[ID].Color = ""
-        local curInfo = C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(ID)
-        if curInfo ~= nil and curInfo[1] ~= nil then
-            allCurInfo[ID] = { Score = curInfo[1].score, Color = "FFFFFF00", Multiplier = 1, MScore = 0 }
-            totalScore = totalScore + curInfo[1].score
+        local curInfo, curScore = C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(ID) -- /dump C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(376)
+        if curScore ~= nil then
+            allCurInfo[ID] = { Score = curScore, Color = "FFFFFF00", Multiplier = 1, MScore = 0 }
+            totalScore = totalScore + curScore
         end
         
 
