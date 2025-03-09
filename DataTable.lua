@@ -3,19 +3,22 @@ if AZP.KeyStoneMaster == nil then AZP.KeyStoneMaster = {} end
 
 AZP.KeyStoneMaster.KeyList =
 {
-    [353] = {Name =    "Siege", NameFull = "Siege of Boralus"},
-    [375] = {Name =    "Mists", NameFull = "Mists of Tirna Scithe"},
-    [376] = {Name =     "Wake", NameFull = "The Necrotic Wake"},
-    -- [499] = {Name =  "Priory", NameFull = "Priory of the Sacred Flame"},
-    -- [500] = {Name = "Rookery", NameFull = "The Rookery"},
-    [501] = {Name =   "SVault", NameFull = "The Stonevault"},
-    [502] = {Name =  "Threads", NameFull = "City of Threads"},
-    [503] = {Name =  "AraKara", NameFull = "Ara-Kara, City of Echoes"},
-    -- [504] = {Name =   "DCleft", NameFull = "Darkflame Cleft"},
-    [505] = {Name = "DBreaker", NameFull = "The Dawnbreaker"},
-    -- [506] = {Name = "Meadery", NameFull = "Cinderbrew Meadery"},
-    [507] = {Name =   "GBatol", NameFull = "Grim Batol"},
-
+    -- [353] = {Name =    "Siege", NameFull = "Siege of Boralus"},
+    -- [375] = {Name =    "Mists", NameFull = "Mists of Tirna Scithe"},
+    -- [376] = {Name =     "Wake", NameFull = "The Necrotic Wake"},
+    [499] = {Name =  "Priory", NameFull = "Priory of the Sacred Flame"},
+    [500] = {Name = "Rookery", NameFull = "The Rookery"},
+    -- [501] = {Name =   "SVault", NameFull = "The Stonevault"},
+    -- [502] = {Name =  "Threads", NameFull = "City of Threads"},
+    -- [503] = {Name =  "AraKara", NameFull = "Ara-Kara, City of Echoes"},
+    [504] = {Name =   "DCleft", NameFull = "Darkflame Cleft"},
+    -- [505] = {Name = "DBreaker", NameFull = "The Dawnbreaker"},
+    [506] = {Name = "Meadery", NameFull = "Cinderbrew Meadery"},
+    -- [507] = {Name =   "GBatol", NameFull = "Grim Batol"},
+    [525] = {Name = "Floodgate", NameFull="Operation: Floodgate"},
+    [370] = {Name = "Mechagon", NameFull = "Operation: Mechagon - Workshop"},
+    [247] = {Name = "M.LOAD!!", NameFull = "The MOTHERLODE!!"},
+    [382] = {Name = "Theatre", NameFull = "Theater of Pain"},
     --/script for i = 1, 10000 do if C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i) ~= nil then print("DungeonIndex:", i, "     - ", C_MythicPlus.GetSeasonBestAffixScoreInfoForMap(i)) end end
 }
 
